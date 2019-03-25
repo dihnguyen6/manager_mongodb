@@ -24,10 +24,10 @@ public class ProductController {
         return repository.findAll();
     }
 
-    /*@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Product getProduct(@PathVariable String id) {
-        return repository.findOne(id);
-    }*/
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public Product getProduct(@PathVariable ObjectId id) {
+        return repository.findById(id);
+    }
 
     // POST Method
     @RequestMapping(value = "/", method = RequestMethod.POST)

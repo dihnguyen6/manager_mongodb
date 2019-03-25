@@ -32,9 +32,10 @@ public class OrderController {
 
     //POST method
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public void createOrder(@Valid @RequestBody Order order) {
+    public Order createOrder(@Valid @RequestBody Order order) {
         order.setOrderTime(time.convert(Calendar.getInstance().getTime()));
         repository.save(order);
+        return order;
     }
 
     //PUT method
@@ -47,7 +48,7 @@ public class OrderController {
         if (order.getQuantity() != null) {
             ord.setQuantity(order.getQuantity());
         }
-        ord.setStatus(order.isStatus());
+        ord.setDone(order.isDone());
         ord.setOrderTime(time.convert(Calendar.getInstance().getTime()));
         repository.save(ord);
         return ord;

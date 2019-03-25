@@ -2,7 +2,6 @@ package com.g4tech.manager.realtime.models;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Reference;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -17,13 +16,13 @@ public class Order {
     private String quantity;
     private ZonedDateTime orderTime;
     private String table;
-    private boolean status;
+    private boolean isDone;
 
     public Order(String table, Product product, String quantity) {
         this.table = table;
         this.product = product;
         this.quantity = quantity;
-        this.status = false;
+        this.isDone = false;
     }
 
     public Product getProduct() {
@@ -58,12 +57,12 @@ public class Order {
         this.table = table;
     }
 
-    public boolean isStatus() {
-        return status;
+    public boolean isDone() {
+        return isDone;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setDone(boolean done) {
+        this.isDone = done;
     }
 
     public String getId() {
